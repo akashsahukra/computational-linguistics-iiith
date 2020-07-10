@@ -54,6 +54,18 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             
         }
     }
+    function showOff(id) {
+        id1 = "#" + id.toString();
+        var value = $(id1).text();
+        console.log(value);
+        $("#user-input").append("<p>" + value + " " + "</p>");
+        if ($("#user-input").children().length == 1) {
+            var reform = document.createElement("button");
+            reform.id = "re-form";
+            reform.textContent = "Re-form the sentence";
+            $("#reform").html(reform);
+        }
+    }
     
 $("#lang").on("change", function () {
     if ($(this).val() == "null") {
@@ -68,8 +80,14 @@ $("#lang").on("change", function () {
     if ($(this).val() == "english") {
         var RandEng = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
         list_of_buttons = shuffle(createRandom(RandEng));
+        $("#user-input").empty();
+        $("#reform").empty();
         $("#btns").html("");
         $("#btns").html(createButtons(list_of_buttons));
+        $(".word").click(function () {
+            showOff(this.id);
+            document.getElementById(this.id).style.display = "none";
+        })
         
         
     }
@@ -77,8 +95,14 @@ $("#lang").on("change", function () {
     if ($(this).val() == "hindi") {
         var RandHin = [sen1, sen2, sen3, sen4, sen5, sen6, sen7];
         list_of_buttons1 = shuffle(createRandom(RandHin));
-        $("#btns").html("");
+        $("#user-input").empty();
+        $("#reform").empty();
+        $("#btns").html(""); 
         $("#btns").html(createButtons(list_of_buttons1));
+        $(".word").click(function () {
+            showOff(this.id);
+            document.getElementById(this.id).style.display = "none";
+        })
     }
 });
 
