@@ -77,6 +77,16 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             $("#reform").html(reform);
         }
     }
+    function check() {
+        console.log($("#btns").children().length);
+        if ($("#btns").children().length === 0 ) {
+            var check = document.createElement("button");
+            check.id = "checked";
+            check.textContent = "Check correctness of sentence";
+            $("#check").html(check);
+        }
+
+    }
 
     function clickword() {
         if ($("#lang").val() == "english") {
@@ -87,9 +97,11 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         }
         $(".word").click(function () {
             showOff(this.id);
-            document.getElementById(this.id).style.display = "none";
+            document.getElementById(this.id).remove();
             reform();
+            check();
         })
+
     }
     
 $("#lang").on("change", function () {
@@ -105,14 +117,10 @@ $("#lang").on("change", function () {
     if ($(this).val() == "english") {
         var RandEng = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
         list_of_buttons = shuffle(createRandom(RandEng));
-        
         $("#user-input").empty();
         $("#reform").empty();
         $("#btns").html("");
-
         clickword();
-        
-    
 
     }
 
