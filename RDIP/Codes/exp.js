@@ -20,6 +20,17 @@ var sen5=["बिल्लियों को मारकर कुत्ता
 var sen6=["एक लाल किताब वहाँ है","एक लाल किताब है वहाँ","वहाँ है एक लाल किताब","है वहाँ एक लाल किताब"]
 var sen7=["एक बड़ी सी किताब वहाँ है","एक बड़ी सी किताब है वहाँ","बड़ी सी एक किताब वहाँ है","बड़ी सी एक किताब है वहाँ","वहाँ है एक बड़ी सी किताब","वहाँ है बड़ी सी एक किताब"," है वहाँ एक बड़ी सी किताब","है वहाँ बड़ी सी एक किताब"]
 
+    function reform() {
+        $("#re-form").click(function () {
+            // alert(9);
+            $("#reform").empty();
+            $("#user-input").empty();    
+            $("#btns").empty();
+            clickword();
+        })
+
+    }
+    
     function createRandom(RandEng) {
         var idx = Math.floor(Math.random() * RandEng.length);
         arrE = RandEng[idx];
@@ -66,6 +77,20 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             $("#reform").html(reform);
         }
     }
+
+    function clickword() {
+        if ($("#lang").val() == "english") {
+            $("#btns").html(createButtons(list_of_buttons));
+        }
+        if($("#lang").val() == "hindi") {
+            $("#btns").html(createButtons(list_of_buttons1));
+        }
+        $(".word").click(function () {
+            showOff(this.id);
+            document.getElementById(this.id).style.display = "none";
+            reform();
+        })
+    }
     
 $("#lang").on("change", function () {
     if ($(this).val() == "null") {
@@ -80,16 +105,15 @@ $("#lang").on("change", function () {
     if ($(this).val() == "english") {
         var RandEng = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
         list_of_buttons = shuffle(createRandom(RandEng));
+        
         $("#user-input").empty();
         $("#reform").empty();
         $("#btns").html("");
-        $("#btns").html(createButtons(list_of_buttons));
-        $(".word").click(function () {
-            showOff(this.id);
-            document.getElementById(this.id).style.display = "none";
-        })
+
+        clickword();
         
-        
+    
+
     }
 
     if ($(this).val() == "hindi") {
@@ -98,11 +122,8 @@ $("#lang").on("change", function () {
         $("#user-input").empty();
         $("#reform").empty();
         $("#btns").html(""); 
-        $("#btns").html(createButtons(list_of_buttons1));
-        $(".word").click(function () {
-            showOff(this.id);
-            document.getElementById(this.id).style.display = "none";
-        })
+        clickword();
+    
     }
 });
 
