@@ -1,9 +1,32 @@
+*{
+    font-family: Arial;
+}
+#start-2{
+    font-style: italic;
+}
+i{
+    color: #0000FF;
+}
 #user-input>p{
     display: inline;
+    font-size: 30px;
+    font-weight: bold;
+    color: #444444;
 }
 .Experiment{
     text-align: center;
 }
 #btns button{
     margin : 5px 1em 5px 0px;
+}
+#getcorrect,#reform,#check{
+    margin: 1em;
+}
+#result{
+    font-size: 30px;
+}
+#answers{
+    margin-top: 1.5em;
+    color: #444444;
+    font-size: 16px;
 }

@@ -23,6 +23,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
     function reform() {
         $("#re-form").click(function () {
             // alert(9);
+            $("#user-start").hide();
             $("#reform").empty();
             $("#user-input").empty();    
             $("#btns").empty();
@@ -82,10 +83,12 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         
         $("#checked").click(function () {
             if (arrE.includes($("#user-input").text().trim())) {
+                $("#result").css("color", "green");
                 $("#result").text("Right Answer!!!");
                 
             }
             else {
+                $("#result").css("color", "red");
                 $("#result").text("Wrong Answer!!!")
                 $("#getcorrect").text("Get Correct Sentence");
                 $("#getcorrect").show();
@@ -113,6 +116,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
 
     }
     function clickword() {
+        
         if ($("#lang").val() == "english") {
             $("#btns").html(createButtons(list_of_buttons));
         }
@@ -121,6 +125,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         }
         
         $(".word").click(function () {
+            $("#user-start").css("display", "block");
             showOff(this.id);
             document.getElementById(this.id).remove();
             reform();
@@ -129,7 +134,9 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         })
     }
     
-$("#lang").on("change", function () {
+    $("#lang").on("change", function () {
+        console.clear();
+        $("#user-start").hide();
     if ($(this).val() == "null") {
         alert("Select a language");
         return false;
@@ -140,23 +147,35 @@ $("#lang").on("change", function () {
         $("#start-2").html("<p>" + "(select the buttons in proper order)" + "</p>");
     }
     if ($(this).val() == "english") {
+        console.clear();
         var RandEng = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
         list_of_buttons = shuffle(createRandom(RandEng));
         $("#user-input").empty();
         $("#reform").empty();
+        $("#check").empty();
+        $("#result").empty();
+        $("#getcorrect").css("display", "none");
+        $("#answers").css("display", "none");
         $("#btns").html("");
+        
         for (var item of arrE) {
             $("#answers").append("<p>" + item + "</p>");
         }
         clickword();
-
+        
     }
 
     if ($(this).val() == "hindi") {
+        console.clear();
         var RandHin = [sen1, sen2, sen3, sen4, sen5, sen6, sen7];
         list_of_buttons1 = shuffle(createRandom(RandHin));
         $("#user-input").empty();
         $("#reform").empty();
+        $("#check").empty();
+        $("#result").empty();
+        $("#getcorrect").css("display", "none");
+        $("#answers").css("display", "none");
+        $("#btns").html("");
         $("#btns").html(""); 
         for (var item of arrE) {
             $("#answers").append("<p>" + item + "</p>");
