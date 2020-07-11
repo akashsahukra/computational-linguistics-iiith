@@ -28,6 +28,9 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             $("#reform").empty();
             $("#user-input").empty();    
             $("#btns").empty();
+            $("#result").empty();
+            $("#getcorrect").hide();
+            $("#answers").empty();
             clickword();
         })
 
@@ -83,6 +86,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
     function right_wrong() {
         
         $("#checked").click(function () {
+            $("#answers").hide();
             if (arrE.includes($("#user-input").text().trim())) {
                 $("#result").css("color", "green");
                 $("#result").text("Right Answer!!!");
@@ -91,15 +95,19 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             else {
                 $("#result").css("color", "red");
                 $("#result").text("Wrong Answer!!!")
+                var btn = document.createElement("button");
+                btn.id = "getcorrect";
+                $("#tog").html(btn);
                 $("#getcorrect").text("Get Correct Sentence");
                 $("#getcorrect").show();
                 $("#getcorrect").click(function () {
-                    $("#answers").toggle();
                     if ($("#getcorrect").text() == "Get Correct Sentence") {
                         $("#getcorrect").text("Hide the correct Sentence");
+                        $("#answers").show();
                     }
                     else {
                         $("#getcorrect").text("Get Correct Sentence");
+                        $("#answers").hide();
                     }
                 })
             }
@@ -160,6 +168,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         $("#answers").css("display", "none");
         $("#btns").html("");
         
+        $("#answers").html("");
         for (var item of arrE) {
             $("#answers").append("<p>" + item + "</p>");
         }
