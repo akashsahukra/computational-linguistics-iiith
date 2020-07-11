@@ -77,6 +77,31 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
             $("#reform").html(reform);
         }
     }
+    
+    function right_wrong() {
+        
+        $("#checked").click(function () {
+            if (arrE.includes($("#user-input").text().trim())) {
+                $("#result").text("Right Answer!!!");
+                
+            }
+            else {
+                $("#result").text("Wrong Answer!!!")
+                $("#getcorrect").text("Get Correct Sentence");
+                $("#getcorrect").show();
+                $("#getcorrect").click(function () {
+                    $("#answers").toggle();
+                    if ($("#getcorrect").text() == "Get Correct Sentence") {
+                        $("#getcorrect").text("Hide the correct Sentence");
+                    }
+                    else {
+                        $("#getcorrect").text("Get Correct Sentence");
+                    }
+                })
+            }
+        })
+    }
+    
     function check() {
         console.log($("#btns").children().length);
         if ($("#btns").children().length === 0 ) {
@@ -87,7 +112,6 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         }
 
     }
-
     function clickword() {
         if ($("#lang").val() == "english") {
             $("#btns").html(createButtons(list_of_buttons));
@@ -95,13 +119,14 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         if($("#lang").val() == "hindi") {
             $("#btns").html(createButtons(list_of_buttons1));
         }
+        
         $(".word").click(function () {
             showOff(this.id);
             document.getElementById(this.id).remove();
             reform();
             check();
+            right_wrong();
         })
-
     }
     
 $("#lang").on("change", function () {
@@ -120,6 +145,9 @@ $("#lang").on("change", function () {
         $("#user-input").empty();
         $("#reform").empty();
         $("#btns").html("");
+        for (var item of arrE) {
+            $("#answers").append("<p>" + item + "</p>");
+        }
         clickword();
 
     }
@@ -130,6 +158,9 @@ $("#lang").on("change", function () {
         $("#user-input").empty();
         $("#reform").empty();
         $("#btns").html(""); 
+        for (var item of arrE) {
+            $("#answers").append("<p>" + item + "</p>");
+        }
         clickword();
     
     }

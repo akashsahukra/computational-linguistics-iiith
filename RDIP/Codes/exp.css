@@ -1,3 +1,9 @@
 #user-input>p{
     display: inline;
 }
+.Experiment{
+    text-align: center;
+}
+#btns button{
+    margin : 5px 1em 5px 0px;
+}
