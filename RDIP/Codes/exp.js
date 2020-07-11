@@ -24,6 +24,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
         $("#re-form").click(function () {
             // alert(9);
             $("#user-start").hide();
+            $("#check").hide();
             $("#reform").empty();
             $("#user-input").empty();    
             $("#btns").empty();
@@ -108,6 +109,7 @@ var sen7=["एक बड़ी सी किताब वहाँ है","एक 
     function check() {
         console.log($("#btns").children().length);
         if ($("#btns").children().length === 0 ) {
+            $("#check").show();
             var check = document.createElement("button");
             check.id = "checked";
             check.textContent = "Check correctness of sentence";
