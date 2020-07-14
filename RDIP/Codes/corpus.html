@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Experiment</h1>
+    <div id="select">
+        <select name="corpus" id="corpus" onchange="showcorpus()">
+            <option value="none" class="cor">---Select a corpus---</option>
+            <option value="corpus1" class="cor">Corpus1</option>
+            <option value="corpus2" class="cor">Corpus2</option>
+            <option value="corpus3" class="cor">Corpus3</option>
+        </select>
+    </div>
+    <div id="paragraph">
+
+    </div>
+    <div id="options">
+        <center>
+            <table id="inputs" cellspacing="-2" cellpadding="4" border="0" style="text-align:center; display:none">
+                <tbody>
+                    <tr><td>#tokens:</td><td id="ans1_cont">
+                    <input type="text" id="ans1" name="tokens" size="4"></td></tr>
+                    <tr><td>#types:</td><td id="ans2_cont"> 
+                    <input type="text" name="types" id="ans2" size="4"></td></tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+    <script src="corpus.js"></script>
+</body>
+</html>
