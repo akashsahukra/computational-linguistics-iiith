@@ -1,0 +1,5 @@
+1. This experiment is to find the number of words in the selected corpus we use a function in this experiment which finds out how many words are there in the selected corpus.
+2.There is another function which  finds out no of unique words in the corpus
+3.While submitting it checks whether the given input  matches the number of tokens and types in the function 
+4.If matches we output the correct answer or else wrong answer
+5. if the answer is correct then an input box is displayed to enter the new types i.e, the no. of root words used in the corpus.
