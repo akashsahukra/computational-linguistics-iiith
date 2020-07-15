@@ -1,7 +1,8 @@
 var display = document.getElementById("paragraph");
 var inputs = document.getElementById("inputs");
+var submitbtn = document.getElementById("submit");
 function showcorpus() {
-    
+    submitbtn.style.display = "block";
     inputs.style.display = "block";
     var corpval = document.getElementById("corpus").value;
     if (corpval == "corpus1") {
@@ -31,4 +32,9 @@ function showcorpus() {
         alert("Select a language");
         return false;
     }
+}
+
+function check() {
+    var errmsg = document.getElementById("error-msg");
+    errmsg.innerHTML = "<p>" + "Enter the correct number of tokens and types from the corpus" + "</p>";
 }

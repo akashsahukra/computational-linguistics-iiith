@@ -18,8 +18,9 @@
     <div id="paragraph">
 
     </div>
+    <div id="error-msg"></div>
     <div id="options">
-        <center>
+        
             <table id="inputs" cellspacing="-2" cellpadding="4" border="0" style="text-align:center; display:none">
                 <tbody>
                     <tr><td>#tokens:</td><td id="ans1_cont">
@@ -28,7 +29,8 @@
                     <input type="text" name="types" id="ans2" size="4"></td></tr>
                 </tbody>
             </table>
-        </center>
+            <button id="submit" type="submit" onclick="check();" style="display: none;">Submit</button>
+    
     </div>
     <script src="corpus.js"></script>
 </body>
