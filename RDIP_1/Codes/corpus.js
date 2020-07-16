@@ -14,6 +14,12 @@ var inp2 = document.getElementById("ans2");
 var response = document.getElementById("response");
 var options = document.getElementById("options");
 
+//stemer
+var stemmer = new Snowball('English');
+stemmer.setCurrent('asky');    
+var s = stemmer.stem();
+console.log(s);
+console.log(stemmer.getCurrent());
 
 function recalculate() {
     document.getElementById("re-calculate").style.display = "none";
