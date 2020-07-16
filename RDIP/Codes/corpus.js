@@ -5,15 +5,24 @@ var corpus2=['A wolf carried off a lamb. The lamb said, " I know you are going t
 
 var corpus3=["A man had a little dog, and he was very fond of it. He would pat its head, and take it on his knee, and talk to it. Then he would give it little bits of food from his own plate. A donkey looked in at the window and saw the man and the dog. \"Why does he not make a pet of me?\" said the donkey. \"It is not fair. I work hard, and the dog only wags its tail, and barks, and jumps on its master's knee. It is not fair.\" Then the donkey said to himself, \"If I do what the dog does, he may make a pet of me.\" So the donkey ran into the room. It brayed as loudly as it could. It wagged its tail so hard that it knocked over a jar on the table. Then it tried to jump on to its master's knee. The master thought the donkey was mad, and he shouted, \"Help! Help!\" Men came running in with sticks, and they beat the donkey till it ran out of the house, and they drove it back to the field. \"I only did what the dog does,\" said the donkey,\" and yet they make a pet of the dog, and they beat me with sticks. It is not fair."]
  
-
+var errmsg = document.getElementById("errmsg");
 var display = document.getElementById("paragraph");
 var inputs = document.getElementById("inputs");
 var submitbtn = document.getElementById("submit");
 var inp1 = document.getElementById("ans1");
 var inp2 = document.getElementById("ans2");
 var response = document.getElementById("response");
-var errmsg = document.getElementById("error-msg");
 var options = document.getElementById("options");
+
+
+function recalculate() {
+    document.getElementById("re-calculate").style.display = "none";
+    submitbtn.style.display = "none";
+    response.innerHTML = "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.</p>"
+    document.getElementById("inp-3").innerHTML = '<p>#new types</p><input type="text" id="ans3" size="4"><br>';
+    var another = document.getElementById("another-smt");
+    another.innerHTML = '<button id="re-submit">Submit</button>';
+}
 
 function tokens(str) {
     temp = str;
@@ -33,8 +42,9 @@ function getAnswer(token, type) {
         response.innerHTML = '<p style="color: green;">Right Answer</p>';
         inp1.style.backgroundColor = 'green';
         inp2.style.backgroundColor = 'green';
-        errmsg.innerHTML = "";
-        // document.getElementsByClassName("re-calculate").style.display = "block";
+        
+        // document.getElementById("submit").style.display = "none";
+        document.getElementById("re-calculate").style.display = "block";
     }
 
     else {
@@ -58,6 +68,7 @@ function getAnswer(token, type) {
 }
 
 function showcorpus() {
+    errmsg.style.display = "block";
     submitbtn.style.display = "block";
     inputs.style.display = "block";
     var corpval = document.getElementById("corpus").value;
@@ -68,8 +79,9 @@ function showcorpus() {
         inp1.removeAttribute('style');
         // alert(09);
         inp2.removeAttribute('style');
+        document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
-        errmsg.innerHTML = "";
+    
         
         for (let i = 0; i < corpus.length; i++) {
             display.append(corpus1[i]);
@@ -84,8 +96,9 @@ function showcorpus() {
         inp1.removeAttribute('style');
         // alert(09);
         inp2.removeAttribute('style');
+        document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
-        errmsg.innerHTML = "";
+        ;
         
         for (let i = 0; i < corpus.length; i++) {
             display.append(corpus2[i]);
@@ -100,8 +113,9 @@ function showcorpus() {
         inp1.removeAttribute('style');
         // alert(09);
         inp2.removeAttribute('style');
+        document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
-        errmsg.innerHTML = "";
+        
         
         for (let i = 0; i < corpus.length; i++) {
             display.append(corpus3[i]);
@@ -120,7 +134,7 @@ console.log(stemmer.getCurrent());
 
 function check() {
     
-    errmsg.innerHTML = "<p>" + "Enter the correct number of tokens and types from the corpus" + "</p>";
+    
     corpval = document.getElementById("corpus");
     // alert(78);
     var corpval = document.getElementById("corpus").value;

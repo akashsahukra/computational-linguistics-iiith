@@ -19,7 +19,7 @@
     <div id="paragraph">
 
     </div>
-    <div id="error-msg"></div>
+    <div style="display: none;" id="errmsg"><p>Enter the number of tokens and types for the above corpus:</p></div>
     <div id="options">
         
             <table id="inputs" cellspacing="-2" cellpadding="4" border="0" style="text-align:center; display:none">
@@ -34,7 +34,10 @@
     
     </div>
     <div id="response"></div>
-    <div class="re-calculate" style="display: none;"><button id="re-calculate" onclick="recalculate();">Continue</button></div>
+    <div id="re-calculate" style="display: none;"><button id="continue" onclick="recalculate();">Continue</button></div>
+    <div id="inp-3"></div>
+    <div id="another-smt"></div>
+    
     <script src="corpus.js"></script>
 </body>
 </html>
