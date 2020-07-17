@@ -100,8 +100,8 @@ function counttypes(arr) {
 function getAnswer(token, type) {
     if (token == inp1.value && type == inp2.value) {
         response.innerHTML = '<p style="color: green;">Right Answer</p>';
-        inp1.style.backgroundColor = 'green';
-        inp2.style.backgroundColor = 'green';
+        inp1.style.backgroundColor = "green";
+        inp2.style.backgroundColor = "green";
         
         // document.getElementById("submit").style.display = "none";
         document.getElementById("re-calculate").style.display = "block";
