@@ -18,6 +18,9 @@ var inp1 = document.getElementById("ans1");
 var inp2 = document.getElementById("ans2");
 var response = document.getElementById("response");
 var options = document.getElementById("options");
+var inp3 = document.getElementById("inp-3");
+var another_submit = document.getElementById("another-smt");
+var response2 = document.getElementById("response-2");
 
 //stemer
 
@@ -55,6 +58,16 @@ function newtypes() {
     }
     count = counttypes(temp);
     console.log(count);
+    var ans3 = document.getElementById("ans3");
+    var response2 = document.getElementById("response-2");
+    if (ans3.value == count) {
+        ans3.style.backgroundColor = 'green';
+        response2.innerHTML = '<p style="color : green">Right Answer</p>';
+    }
+    else {
+        ans3.style.backgroundColor = 'red';
+        response2.innerHTML = '<p style="color : red">Wrong Answer</p>';
+    }
 }
 
 function recalculate() {
@@ -128,6 +141,11 @@ function showcorpus() {
         inp2.removeAttribute('style');
         document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
+        inp3.innerHTML = "";
+        response2.innerHTML = "";
+        another_submit.innerHTML = "";
+        
+        
     
         
         // for (let i = 0; i < corpus.length; i++) {
@@ -146,7 +164,9 @@ function showcorpus() {
         inp2.removeAttribute('style');
         document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
-        ;
+        inp3.innerHTML = "";
+        response2.innerHTML = "";
+        another_submit.innerHTML = "";
         
         // for (let i = 0; i < corpus.length; i++) {
         //     display.append(corpus2[i]);
@@ -164,6 +184,9 @@ function showcorpus() {
         inp2.removeAttribute('style');
         document.getElementById("re-calculate").style.display = "none";
         response.innerHTML = "";
+        inp3.innerHTML = "";
+        response2.innerHTML = "";
+        another_submit.innerHTML = "";
         
         
         // for (let i = 0; i < corpus.length; i++) {
