@@ -80,6 +80,7 @@ function types(str) {
 function counttypes(arr) {
     temp = arr.join('|').toLowerCase().split("|");
     ans = temp.filter(function (i, idx, arr) { return idx == arr.indexOf(i); });
+    console.log(ans);
     return ans.length;
 }
 
@@ -205,3 +206,4 @@ function check() {
 }
 
 // Source : https://stackoverflow.com/questions/13841217/remove-duplicate-characters-from-string/39761020
+// Source : https://www.mathworks.com/help/textanalytics/ref/tokenizeddocument.regexprep.html
