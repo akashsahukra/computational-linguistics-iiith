@@ -1,0 +1,29 @@
+::selection{
+    background: #FF5ee9;
+    color : #fff;
+}
+body{
+    font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;
+    margin: 2em;
+    font-size: 100%;
+}
+table{
+    
+    border-spacing: 0;
+    margin-left: 41.4em;
+    margin-right: auto;
+}
+td{
+ border: 1px solid; 
+ padding: 10px;  
+ margin: 1em;
+}
+#select,#errmsg,#response,#re-calculate,#inp-3,#another-smt,#response-2,#submit,#paragraph{
+    text-align: center;
+}
+#submit{
+    margin-left: 45.5em;
+    margin-top: 1.2em;
+    font-size: medium;
+}
+
