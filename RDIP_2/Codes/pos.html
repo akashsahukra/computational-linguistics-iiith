@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Experiment</h1>
+    <center>
     <div id="selection">
     <select name="pos" id="pos">
         <option value="none">---Select Language---</option>
@@ -17,7 +18,14 @@
     </div><br>
     <div id="lang" style="display: none;">
         <select name="language" id="language"></select>
+    </div><br>
+    <div style="text-align:center;color:#0000FF" id="stat"></div><br>
+    <div id="pos-table" style="display: none;">
+        <table cellspacing="-2" cellpadding="4" border="1" style="text-align:center;height:25px;width:25px">
+            <tbody id="table-pos"></tbody>
+        </table>
     </div>
+    </center>
     <script src="pos.js"></script>
 </body>
 </html>
