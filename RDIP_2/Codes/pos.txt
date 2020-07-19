@@ -1,0 +1,7 @@
+1. This experiment is mainly to check concept of the parts of speech i.e., we need to find the parts of speech of each word in a sentence.
+2. For that we need to select two languages 1 --> English and 2 --> Hindi.
+3. After that select a sentence, from the selected sentence we need to form a table of words from that sentence.
+4. We make dropdown menus for each row to select parts of speech.
+5. Then we write a function for checking its parts of speech.
+6. After selecting POS for each word we will Submit the answer by clicking submit button.
+7. It will show the correct answers adjacent to the row of a word.
