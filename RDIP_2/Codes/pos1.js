@@ -1,8 +1,22 @@
-$(document).ready(function () {
-e1 = ['The child liked the chocolate.', 'She was stopped by the bravest knight.', 'Mary baked a cake for his birthday', 'She decorated the cake carefully', 'Mary wore a dress with polka dots.'];
+var pos = require(['pos'])
+    console.log(12);
+    var words = new pos.Lexer().lex('She decorated the cake carefully'); 
+    var tagger = new pos.Tagger();
+    var taggedWords = tagger.tag(words);
+    for (i in taggedWords) {
+        var taggedWord = taggedWords[i];
+        var word = taggedWord[0];
+    var tag = taggedWord[1];
+    console.log(word + " /" + tag);
+}   
 
-h1 = ['राम ने सीता के लिए फल तोड़ा।','छोटे बच्चे पाठशाला जल्दी आयेंगे।','मेहनत का फल मीठा होता है।','वाह! वह खूबसूरत है।','पेड़ से पत्ते गिर गए।']
-var temp, val;
+
+
+    e1 = ['The child liked the chocolate.', 'She was stopped by the bravest knight.', 'Mary baked a cake for his birthday', 'She decorated the cake carefully', 'Mary wore a dress with polka dots.'];
+    
+    h1 = ['राम ने सीता के लिए फल तोड़ा।','छोटे बच्चे पाठशाला जल्दी आयेंगे।','मेहनत का फल मीठा होता है।','वाह! वह खूबसूरत है।','पेड़ से पत्ते गिर गए।']
+    var temp, val;
+    
     function show_drop_down(arr) {
         $('#language').html('');
         $("#lang").css("display", "block");
@@ -12,7 +26,7 @@ var temp, val;
             $('#language').append('<option value=' + arr[i]+'>'+arr[i]+'</option>');
     }
     }
-    
+
     $("#pos").on('change', function () {
         if ($("#pos").val() != "none") {
             $("#pos-table").css("display", "none");
@@ -61,4 +75,4 @@ var temp, val;
         
 
     });
-});
+
