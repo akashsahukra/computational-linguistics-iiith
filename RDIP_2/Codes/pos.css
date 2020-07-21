@@ -21,6 +21,10 @@ td, th {
     padding: 10px;
 }
 
+img{
+    padding-left : 40px;
+}
+
 
 tbody{
     display: table-row-group;

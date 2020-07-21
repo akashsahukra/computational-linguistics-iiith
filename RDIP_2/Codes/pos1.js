@@ -82,28 +82,30 @@ var temp, val;
         $("#stat").html("<i>Select the POS tag for corresponding words</i>");
         if ($("#language").val() != "none") { 
             val = $("#language option:selected").text().split(" ");
-            
+            $("#get-answer").hide();
         }
         else {
             alert("Select a sentence");
         }
         $("#table-pos").append('<tr><th>Lexicon</th><th>POS</th><th id="cor_head"></th><th id="ans_head"></th></tr>')
         // alert(temp);
-        if (temp == "eng") {
-            for (let i = 0; i < val.length; i++) {
-                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token'+i+'"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction'+i+'"></td><td id="correct'+i+'"></td></tr>')
-            }
-        }
-        if(temp == "hin") {
-            for (let i = 0; i < val.length; i++) {
-                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token'+i+'"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction'+i+'"></td><td id="correct'+i+'"></td></tr>')
-            }
-        }
         
-
+            if (temp == "eng") {
+                for (let i = 0; i < val.length; i++) {
+                    $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token' + i + '"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction' + i + '"></td><td id="correct' + i + '"></td></tr>')
+                }
+            }
+            if (temp == "hin") {
+                for (let i = 0; i < val.length; i++) {
+                    $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token' + i + '"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction' + i + '"></td><td id="correct' + i + '"></td></tr>')
+                }
+            }
+        
+        
     });
     $("#check").click(function () { 
         // console.log(9);
+        $("#get-answer").show();
         var c1 = 0;
         var c2 = 0;
         result = []
@@ -112,6 +114,7 @@ var temp, val;
         // console.log(input.nouns().toPlural().text());
         if (temp == "eng") { 
             for (let i = 0; i < val.length; i++) {
+                if(val[i] == "bravest"){ val[i] = "brave"}
                 var input = nlp(val[i]);
                 if ((input.nouns().text()) != "")
                     result[i] = "Noun";
