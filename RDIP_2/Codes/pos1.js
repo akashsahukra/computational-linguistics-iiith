@@ -11,6 +11,39 @@ hind_map.set(h1[4], ["Noun", "Postposition", "Noun", "Verb", "Verb"]);
 // hind_map.set(1, "aksah");
 var temp, val;
     
+    function getans() {
+        // alert(9);
+        if ($("#toogle1").text() == "Get Answer") {
+            $("#toogle1").text("Hide Answer");
+            if (temp == "eng") {
+                for (let i = 0; i < val.length; i++) {
+                    
+                    $("#correct" + i).html(result[i]);
+                }
+            }
+            else {
+                for (let i = 0; i < val.length; i++) {
+                    $("#correct" + i).html(hind_map.get(val.join(" "))[i]);
+                    
+                }
+            }
+        } else {
+            $("#toogle1").text("Get Answer");  
+            if (temp == "eng") {
+                for (let i = 0; i < val.length; i++) {
+                    
+                    $("#correct" + i).html('');
+                }
+            }
+            else {
+                for (let i = 0; i < val.length; i++) {
+                    $("#correct" + i).html('');
+                    
+                }
+            }
+        }
+    }
+
     function show_drop_down(arr) {
         $('#language').html('');
         $("#lang").css("display", "block");
@@ -71,6 +104,8 @@ var temp, val;
     });
     $("#check").click(function () { 
         // console.log(9);
+        var c1 = 0;
+        var c2 = 0;
         result = []
         // console.log(input);
         
@@ -100,17 +135,22 @@ var temp, val;
             for (let i = 0; i < result.length; i++) {
                 // alert("HI");
                 if ($("#token" + i).val() == result[i]) {
+                    c1 += 1;
                     $("#correction" + i).html('<img src="../Libraries/right.png" style="height:25px;width:25px" alt="Wrong">');  
                 }
                 else {
                     $("#correction" + i).html('<img src="../Libraries/wrong.png" style="height:25px;width:25px" alt="Wrong">')
                 }
                 
+            }
+            if (c1 != result.length) {
+                $("#get-answer").html('<button id="toogle1" onclick = "getans()">Get Answer</button>');
             }
         } else {
             for (let i = 0; i < hind_map.get(val.join(" ")).length; i++) {
                 if ($("#token" + i).val() == hind_map.get(val.join(" "))[i]) {
-                    console.log($("#token" + i).val());
+                    // console.log($("#token" + i).val());
+                    c2 += 1
                     $("#correction" + i).html('<img src="../Libraries/right.png" style="height:25px;width:25px" alt="Wrong">');  
                 }
                 else {
@@ -118,7 +158,14 @@ var temp, val;
                 }
                 
             }
+            if (c2 != hind_map.get(val.join(" ")).length) {
+                $("#get-answer").html('<button id="toogle1" onclick = "getans()">Get Answer</button>');
+            }
         }
-        
+
     });
+            
+
+        
+    
 
