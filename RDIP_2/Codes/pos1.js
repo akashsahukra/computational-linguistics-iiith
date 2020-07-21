@@ -1,21 +1,15 @@
-var pos = require(['pos'])
-    console.log(12);
-    var words = new pos.Lexer().lex('She decorated the cake carefully'); 
-    var tagger = new pos.Tagger();
-    var taggedWords = tagger.tag(words);
-    for (i in taggedWords) {
-        var taggedWord = taggedWords[i];
-        var word = taggedWord[0];
-    var tag = taggedWord[1];
-    console.log(word + " /" + tag);
-}   
-
-
 
     e1 = ['The child liked the chocolate.', 'She was stopped by the bravest knight.', 'Mary baked a cake for his birthday', 'She decorated the cake carefully', 'Mary wore a dress with polka dots.'];
     
     h1 = ['राम ने सीता के लिए फल तोड़ा।','छोटे बच्चे पाठशाला जल्दी आयेंगे।','मेहनत का फल मीठा होता है।','वाह! वह खूबसूरत है।','पेड़ से पत्ते गिर गए।']
-    var temp, val;
+let hind_map = new Map()
+hind_map.set(h1[0], ["Noun", "Postposition", "Noun", "Postposition", "Postposition", "Noun", "Verb"]);
+hind_map.set(h1[1], ["Adjective", "Noun", "Noun", "Adverb", "Verb"]);
+hind_map.set(h1[2], ["Noun", "Postposition", "Noun", "Adjective", "Verb", "Verb"]);
+hind_map.set(h1[3], ["Interjection", "Pronoun", "Adjective", "Verb"]);
+hind_map.set(h1[4], ["Noun", "Postposition", "Noun", "Verb", "Verb"]);
+// hind_map.set(1, "aksah");
+var temp, val;
     
     function show_drop_down(arr) {
         $('#language').html('');
@@ -64,15 +58,67 @@ var pos = require(['pos'])
         // alert(temp);
         if (temp == "eng") {
             for (let i = 0; i < val.length; i++) {
-                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token0"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction0"></td><td id="correct0"></td></tr>')
+                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token'+i+'"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Preposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction'+i+'"></td><td id="correct'+i+'"></td></tr>')
             }
         }
         if(temp == "hin") {
             for (let i = 0; i < val.length; i++) {
-                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token0"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction0"></td><td id="correct0"></td></tr>')
+                $("#table-pos").append('<tr><td>' + val[i] + '</td><td><select name="t" id="token'+i+'"><option>Noun</option><option>Pronoun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Determiner</option><option>Postposition</option><option>Conjunction</option><option>Interjection</option></select></td><td id="correction'+i+'"></td><td id="correct'+i+'"></td></tr>')
             }
         }
         
 
+    });
+    $("#check").click(function () { 
+        // console.log(9);
+        result = []
+        // console.log(input);
+        
+        // console.log(input.nouns().toPlural().text());
+        if (temp == "eng") { 
+            for (let i = 0; i < val.length; i++) {
+                var input = nlp(val[i]);
+                if ((input.nouns().text()) != "")
+                    result[i] = "Noun";
+                else if ((input.pronouns().text()) != "")
+                    result[i] = "Pronoun";
+                else if ((input.verbs().text()) != "")
+                    result[i] = "Verb";
+                else if ((input.adjectives().text()) != "")
+                    result[i] = "Adjective";
+                else if ((input.adverbs().text()) != "")
+                    result[i] = "Adverb";
+                else if ((input.prepositions().text()) != "")
+                    result[i] = "Preposition";
+                else if ((input.conjunctions().text()) != "")
+                    result[i] = "Conjunction";
+                else
+                    result[i] = "Determiner";
+                // console.log(result);
+            
+            }
+            for (let i = 0; i < result.length; i++) {
+                // alert("HI");
+                if ($("#token" + i).val() == result[i]) {
+                    $("#correction" + i).html('<img src="../Libraries/right.png" style="height:25px;width:25px" alt="Wrong">');  
+                }
+                else {
+                    $("#correction" + i).html('<img src="../Libraries/wrong.png" style="height:25px;width:25px" alt="Wrong">')
+                }
+                
+            }
+        } else {
+            for (let i = 0; i < hind_map.get(val.join(" ")).length; i++) {
+                if ($("#token" + i).val() == hind_map.get(val.join(" "))[i]) {
+                    console.log($("#token" + i).val());
+                    $("#correction" + i).html('<img src="../Libraries/right.png" style="height:25px;width:25px" alt="Wrong">');  
+                }
+                else {
+                    $("#correction" + i).html('<img src="../Libraries/wrong.png" style="height:25px;width:25px" alt="Wrong">')
+                }
+                
+            }
+        }
+        
     });
 
