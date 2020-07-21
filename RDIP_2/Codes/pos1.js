@@ -76,7 +76,10 @@ var temp, val;
     });
 
     
-    $("#language").on('change', function () {
+$("#language").on('change', function () {
+    if ($("#language").val() == "none") {
+        die("Ji"); 
+    }
         $("#pos-table").css("display", "block");
         $("#table-pos").html('');
         $("#stat").html("<i>Select the POS tag for corresponding words</i>");
